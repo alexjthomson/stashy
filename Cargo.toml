@@ -1,0 +1,17 @@
+[package]
+name = "stashy"
+description = "A trait-based abstraction for stashing key-value data in Rust."
+edition = "2024"
+version = "0.1.0"
+
+[features]
+default = [ "redis" ]
+
+[dependencies]
+thiserror = { version = "2.0" }
+async-trait = { version = "0.1" }
+redis = { version = "0.32", optional = true, features = [ "tokio-comp" ] }
+tokio = { version = "1.0", features = [ "full" ] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
