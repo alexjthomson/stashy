@@ -30,24 +30,35 @@ impl RedisStash {
         host: &str,
         port: u16,
         credentials: Option<RedisCredentials>,
-        database: &str,
+        database_index: Option<u32>,
     ) -> Result<Self, RedisError> {
-        let url = if let Some(credentials) = credentials {
-            format!(
+        let url = match (credentials, database_index) {
+            (Some(credentials), Some(database_index)) => format!(
                 "redis://{}:{}@{}:{}/{}",
                 credentials.username,
                 credentials.password,
                 host,
                 port,
-                database,
-            )
-        } else {
-            format!(
+                database_index,
+            ),
+            (Some(credentials), None) => format!(
+                "redis://{}:{}@{}:{}",
+                credentials.username,
+                credentials.password,
+                host,
+                port,
+            ),
+            (None, Some(database_index)) => format!(
                 "redis://{}:{}/{}",
                 host,
                 port,
-                database,
-            )
+                database_index,
+            ),
+            (None, None) => format!(
+                "redis://{}:{}/0",
+                host,
+                port,
+            ),
         };
         Self::connect_with_string(url).await
     }
