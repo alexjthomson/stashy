@@ -3,6 +3,7 @@ name = "stashy"
 description = "A trait-based abstraction for stashing key-value data in Rust."
 edition = "2024"
 version = "0.1.0"
+license = "MIT"
 
 [features]
 default = [ "redis" ]

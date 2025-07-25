@@ -1,14 +1,14 @@
-target/             # Build output
-**/*.rs.bk           # Rust backup files
+target/**
+**/*.rs.bk
 
 Cargo.lock          # Optional for libraries, keep for binaries
 .cargo/config.toml # Per-project config
 .cargo/credentials # Private tokens
 
-.vscode/
+.vscode/**
 *.code-workspace
 
-.idea/
+.idea/**
 
 *.swp
 *.swo
