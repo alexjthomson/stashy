@@ -1,9 +1,9 @@
 target/**
 **/*.rs.bk
 
-Cargo.lock          # Optional for libraries, keep for binaries
-.cargo/config.toml # Per-project config
-.cargo/credentials # Private tokens
+Cargo.lock
+.cargo/config.toml
+.cargo/credentials
 
 .vscode/**
 *.code-workspace
